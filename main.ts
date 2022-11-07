@@ -735,7 +735,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         true
         )
     }
-    Direction = 2
+    Direction_1 = 0
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     Call_1 = sprites.createProjectileFromSprite(img`
@@ -954,6 +954,9 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, -50, 0)
+    pause(100)
+    Call_1.vx = 0
+    Call_1.vy = 0
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -2543,7 +2546,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         true
         )
     }
-    Direction = 3
+    Direction_1 = 1
 })
 controller.B.onEvent(ControllerButtonEvent.Released, function () {
     Call_1.destroy()
@@ -2559,6 +2562,7 @@ controller.B.onEvent(ControllerButtonEvent.Released, function () {
     Call_11.destroy()
     Call_12.destroy()
 })
+let Direction_1 = 0
 let Direction = 0
 let Call_12: Sprite = null
 let Call_11: Sprite = null
@@ -2831,7 +2835,22 @@ tiles.setCurrentTilemap(tilemap`level1`)
 scene.cameraFollowSprite(Olimar)
 tiles.placeOnTile(Olimar, tiles.getTileLocation(17, 17))
 Direction = 0
+Direction_1 = 0
 scene.setBackgroundColor(7)
+forever(function () {
+    Call_1.setFlag(SpriteFlag.Ghost, true)
+    Call_2.setFlag(SpriteFlag.Ghost, true)
+    Call_3.setFlag(SpriteFlag.Ghost, true)
+    Call_4.setFlag(SpriteFlag.Ghost, true)
+    Call_5.setFlag(SpriteFlag.Ghost, true)
+    Call_6.setFlag(SpriteFlag.Ghost, true)
+    Call_7.setFlag(SpriteFlag.Ghost, true)
+    Call_8.setFlag(SpriteFlag.Ghost, true)
+    Call_9.setFlag(SpriteFlag.Ghost, true)
+    Call_10.setFlag(SpriteFlag.Ghost, true)
+    Call_11.setFlag(SpriteFlag.Ghost, true)
+    Call_12.setFlag(SpriteFlag.Ghost, true)
+})
 forever(function () {
     Call_1.vx += Olimar.vx - Call_1.vx
     Call_1.vy += Olimar.vy - Call_1.vy + 55
@@ -2839,4 +2858,22 @@ forever(function () {
     Call_2.vy += Olimar.vy - Call_2.vy - 55
     Call_3.vx += Olimar.vx - Call_3.vx - 30
     Call_3.vy += Olimar.vy - Call_3.vy + 45
+    Call_4.vx += Olimar.vx - Call_4.vx + 30
+    Call_4.vy += Olimar.vy - Call_4.vy - 45
+    Call_5.vx += Olimar.vx - Call_5.vx - 30
+    Call_5.vy += Olimar.vy - Call_5.vy - 45
+    Call_6.vx += Olimar.vx - Call_6.vx + 30
+    Call_6.vy += Olimar.vy - Call_6.vy + 45
+    Call_7.vx += Olimar.vx - Call_7.vx + 45
+    Call_7.vy += Olimar.vy - Call_7.vy - 25
+    Call_8.vx += Olimar.vx - Call_8.vx - 45
+    Call_8.vy += Olimar.vy - Call_8.vy - 25
+    Call_9.vx += Olimar.vx - Call_9.vx - 45
+    Call_9.vy += Olimar.vy - Call_9.vy + 25
+    Call_10.vx += Olimar.vx - Call_10.vx + 45
+    Call_10.vy += Olimar.vy - Call_10.vy + 25
+    Call_11.vx += Olimar.vx - Call_11.vx + 50
+    Call_11.vy += Olimar.vy - Call_11.vy + 0
+    Call_12.vx += Olimar.vx - Call_12.vx - 50
+    Call_12.vy += Olimar.vy - Call_12.vy + 0
 })
