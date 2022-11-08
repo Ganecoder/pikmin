@@ -1,4 +1,5 @@
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    Direction_1 = 0
     if (Direction == 1) {
         animation.runImageAnimation(
         Olimar,
@@ -735,7 +736,6 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         true
         )
     }
-    Direction_1 = 0
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     Call_1 = sprites.createProjectileFromSprite(img`
@@ -959,6 +959,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     Call_1.vy = 0
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    Direction = 1
     animation.runImageAnimation(
     Olimar,
     [img`
@@ -1325,7 +1326,6 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     35,
     true
     )
-    Direction = 1
 })
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, Olimar)
@@ -1385,6 +1385,7 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
     Red_pikmin.vx = 0
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    Direction = 0
     animation.runImageAnimation(
     Olimar,
     [img`
@@ -1751,7 +1752,6 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     35,
     true
     )
-    Direction = 0
 })
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, Olimar)
@@ -1811,6 +1811,7 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
     }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    Direction_1 = 1
     if (Direction == 1) {
         animation.runImageAnimation(
         Olimar,
@@ -2547,7 +2548,6 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         true
         )
     }
-    Direction_1 = 1
 })
 controller.B.onEvent(ControllerButtonEvent.Released, function () {
     Call_1.destroy()
@@ -2896,7 +2896,7 @@ tiles.placeOnTile(Call_12, tiles.getTileLocation(1000, 1000))
 tiles.setCurrentTilemap(tilemap`level1`)
 scene.cameraFollowSprite(Olimar)
 tiles.placeOnTile(Olimar, tiles.getTileLocation(17, 17))
-Direction = 0
+Direction = 1
 Direction_1 = 0
 scene.setBackgroundColor(7)
 tiles.placeOnTile(Red_pikmin, tiles.getTileLocation(16, 17))
@@ -2917,16 +2917,18 @@ forever(function () {
     Call_12.setFlag(SpriteFlag.Ghost, true)
 })
 forever(function () {
-    if (Direction == 0) {
-        while (Olimar.x - 12 >= Red_pikmin.x) {
-            Red_pikmin.vx = Olimar.vx
-            pause(100)
-        }
-    }
     if (Direction == 1) {
         while (Olimar.x + 12 <= Red_pikmin.x) {
-            Red_pikmin.vx = Olimar.vx
-            pause(100)
+            Red_pikmin.x = Olimar.x + 12
+            pause(.5)
+        }
+    }
+})
+forever(function () {
+    if (Direction == 0) {
+        while (Olimar.x - 12 >= Red_pikmin.x) {
+            Red_pikmin.x = Olimar.x - 12
+            pause(.5)
         }
     }
 })
@@ -2955,18 +2957,4 @@ forever(function () {
     Call_11.vy += Olimar.vy - Call_11.vy + 0
     Call_12.vx += Olimar.vx - Call_12.vx - 50
     Call_12.vy += Olimar.vy - Call_12.vy + 0
-})
-forever(function () {
-    if (Direction_1 == 0) {
-        while (Olimar.y + 20 <= Red_pikmin.y) {
-            Red_pikmin.vy = Olimar.vy
-            pause(100)
-        }
-    }
-    if (Direction_1 == 1) {
-        while (Olimar.y + 12 >= Red_pikmin.y) {
-            Red_pikmin.vy = Olimar.vy
-            pause(100)
-        }
-    }
 })
