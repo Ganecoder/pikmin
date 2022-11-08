@@ -363,7 +363,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
             ...555...555...
             ..2222...2222..
             `],
-        50,
+        35,
         true
         )
     }
@@ -731,7 +731,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
             ...555...555...
             ..2222...2222..
             `],
-        50,
+        35,
         true
         )
     }
@@ -1322,7 +1322,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         ...555...555...
         ..2222...2222..
         `],
-    50,
+    35,
     true
     )
     Direction = 1
@@ -1382,6 +1382,7 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
         ...555...555...
         ..2222...2222..
         `)
+    Red_pikmin.vx = 0
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -1747,7 +1748,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         ...555...555...
         ..2222...2222..
         `],
-    50,
+    35,
     true
     )
     Direction = 0
@@ -2174,7 +2175,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
             ...555...555...
             ..2222...2222..
             `],
-        50,
+        35,
         true
         )
     }
@@ -2542,7 +2543,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
             ...555...555...
             ..2222...2222..
             `],
-        50,
+        35,
         true
         )
     }
@@ -2576,6 +2577,7 @@ let Call_4: Sprite = null
 let Call_3: Sprite = null
 let Call_2: Sprite = null
 let Call_1: Sprite = null
+let Red_pikmin: Sprite = null
 let Olimar: Sprite = null
 Olimar = sprites.create(img`
     .22............
@@ -2603,6 +2605,66 @@ Olimar = sprites.create(img`
     ..2222...2222..
     `, SpriteKind.Player)
 controller.moveSprite(Olimar, 50, 50)
+Red_pikmin = sprites.create(img`
+    . . . . . . . 
+    . . . . . . . 
+    . 7 . . . . . 
+    7 7 7 . . . . 
+    7 7 7 7 . . . 
+    7 7 7 7 . . . 
+    7 7 7 7 . . . 
+    . 7 7 . . . . 
+    . 2 . . . . . 
+    . 2 . . . . . 
+    . 2 2 2 . . . 
+    . f 2 2 f . . 
+    . 2 2 2 2 2 2 
+    . 2 2 2 2 . . 
+    . . 2 2 2 . . 
+    . . . 2 . . . 
+    . . 2 2 2 . . 
+    . . 2 2 2 . . 
+    . . 2 2 2 . . 
+    . . 2 . 2 . . 
+    `, SpriteKind.Enemy)
+let Yellow_Pikmin = sprites.create(img`
+    . 1 . 1 . . . 
+    . 1 1 1 1 . . 
+    1 1 5 5 1 1 . 
+    . 1 5 5 1 1 . 
+    1 1 1 1 1 . . 
+    . . 5 1 . . . 
+    . . . 5 . . . 
+    . . . 5 5 5 . 
+    . 5 5 f 5 5 f 
+    . . 5 5 5 5 5 
+    . . . 5 5 5 5 
+    . . . . 5 5 . 
+    . . . . . 5 . 
+    . . . . 5 5 5 
+    . . . . 5 5 5 
+    . . . . 5 5 5 
+    . . . . 5 . 5 
+    `, SpriteKind.Enemy)
+let Blue_Pikmin = sprites.create(img`
+    . . . . . . . 
+    1 1 . . . . . 
+    1 1 1 . . . . 
+    1 1 1 . . . . 
+    7 1 7 . . . . 
+    . 7 . . . . . 
+    . 8 . . . . . 
+    . 8 8 8 . . . 
+    . f 8 8 f . . 
+    . 8 8 8 8 . . 
+    . 8 8 8 8 . . 
+    . . 8 3 8 . . 
+    . . . 8 . . . 
+    . . 8 8 8 . . 
+    . . 8 8 8 . . 
+    . . 8 8 8 . . 
+    . . 8 . 8 . . 
+    `, SpriteKind.Enemy)
 Call_1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2837,6 +2899,9 @@ tiles.placeOnTile(Olimar, tiles.getTileLocation(17, 17))
 Direction = 0
 Direction_1 = 0
 scene.setBackgroundColor(7)
+tiles.placeOnTile(Red_pikmin, tiles.getTileLocation(16, 17))
+tiles.placeOnTile(Yellow_Pikmin, tiles.getTileLocation(15, 17))
+tiles.placeOnTile(Blue_Pikmin, tiles.getTileLocation(14, 17))
 forever(function () {
     Call_1.setFlag(SpriteFlag.Ghost, true)
     Call_2.setFlag(SpriteFlag.Ghost, true)
@@ -2850,6 +2915,20 @@ forever(function () {
     Call_10.setFlag(SpriteFlag.Ghost, true)
     Call_11.setFlag(SpriteFlag.Ghost, true)
     Call_12.setFlag(SpriteFlag.Ghost, true)
+})
+forever(function () {
+    if (Direction == 0) {
+        while (Olimar.x - 12 >= Red_pikmin.x) {
+            Red_pikmin.vx = Olimar.vx
+            pause(100)
+        }
+    }
+    if (Direction == 1) {
+        while (Olimar.x + 12 <= Red_pikmin.x) {
+            Red_pikmin.vx = Olimar.vx
+            pause(100)
+        }
+    }
 })
 forever(function () {
     Call_1.vx += Olimar.vx - Call_1.vx
@@ -2876,4 +2955,18 @@ forever(function () {
     Call_11.vy += Olimar.vy - Call_11.vy + 0
     Call_12.vx += Olimar.vx - Call_12.vx - 50
     Call_12.vy += Olimar.vy - Call_12.vy + 0
+})
+forever(function () {
+    if (Direction_1 == 0) {
+        while (Olimar.y + 20 <= Red_pikmin.y) {
+            Red_pikmin.vy = Olimar.vy
+            pause(100)
+        }
+    }
+    if (Direction_1 == 1) {
+        while (Olimar.y + 12 >= Red_pikmin.y) {
+            Red_pikmin.vy = Olimar.vy
+            pause(100)
+        }
+    }
 })
