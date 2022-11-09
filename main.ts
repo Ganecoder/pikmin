@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const Whislte = SpriteKind.create()
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     Direction_1 = 0
     if (Direction == 1) {
@@ -756,6 +759,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, 0, 55)
+    Call_1.setKind(SpriteKind.Whislte)
     Call_2 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -774,6 +778,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, 0, -55)
+    Call_2.setKind(SpriteKind.Whislte)
     Call_3 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -792,6 +797,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, -30, 45)
+    Call_3.setKind(SpriteKind.Whislte)
     Call_4 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -810,6 +816,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, 30, -45)
+    Call_4.setKind(SpriteKind.Whislte)
     Call_5 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -828,6 +835,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, -30, -45)
+    Call_5.setKind(SpriteKind.Whislte)
     Call_6 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -846,6 +854,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, 30, 45)
+    Call_6.setKind(SpriteKind.Whislte)
     Call_7 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -864,6 +873,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, 45, -25)
+    Call_7.setKind(SpriteKind.Whislte)
     Call_8 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -882,6 +892,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, -45, -25)
+    Call_8.setKind(SpriteKind.Whislte)
     Call_9 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -900,6 +911,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, -45, 25)
+    Call_9.setKind(SpriteKind.Whislte)
     Call_10 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -918,6 +930,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, 45, 25)
+    Call_10.setKind(SpriteKind.Whislte)
     Call_11 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -936,6 +949,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, 50, 0)
+    Call_11.setKind(SpriteKind.Whislte)
     Call_12 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -954,14 +968,20 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Olimar, -50, 0)
+    Call_12.setKind(SpriteKind.Whislte)
     pause(100)
     Call_1.vx = 0
     Call_1.vy = 0
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    Group_1 = 1
-    Red_pikmin.x = Olimar.x
-    Red_pikmin.y = Olimar.y
+    if (Group_1 == 0) {
+        Group_1 = 1
+        while (controller.A.isPressed()) {
+            Red_pikmin.x = Olimar.x
+            Red_pikmin.y = Olimar.y
+            pause(.1)
+        }
+    }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     Direction = 1
@@ -1360,6 +1380,15 @@ controller.right.onEvent(ControllerButtonEvent.Released, function () {
         ..2222...2222..
         `)
 })
+sprites.onOverlap(SpriteKind.Whislte, SpriteKind.Enemy, function (sprite, otherSprite) {
+    Group_1 = 0
+    sprite.destroy()
+    for (let index = 0; index < 4; index++) {
+        otherSprite.follow(Olimar, 300)
+    }
+    pause(1000)
+    otherSprite.follow(Olimar, 0)
+})
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, Olimar)
     Olimar.setImage(img`
@@ -1757,6 +1786,27 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     35,
     true
     )
+})
+controller.A.onEvent(ControllerButtonEvent.Released, function () {
+    if (Group_1 == 1) {
+        if (Direction == 1) {
+            Red_pikmin.vx = -100
+            pause(500)
+            Red_pikmin.vx = 0
+        }
+        if (Direction == 0) {
+            Red_pikmin.vx = 100
+            pause(500)
+            Red_pikmin.vx = 0
+        }
+        if (Direction_1 == 1) {
+        	
+        }
+        if (Direction_1 == 0) {
+        	
+        }
+        Group_1 = 2
+    }
 })
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, Olimar)
@@ -2689,7 +2739,7 @@ Call_1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2707,7 +2757,7 @@ Call_2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_3 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2725,7 +2775,7 @@ Call_3 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_4 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2743,7 +2793,7 @@ Call_4 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_5 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2761,7 +2811,7 @@ Call_5 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_6 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2779,7 +2829,7 @@ Call_6 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_7 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2797,7 +2847,7 @@ Call_7 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_8 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2815,7 +2865,7 @@ Call_8 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_9 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2833,7 +2883,7 @@ Call_9 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_10 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2851,7 +2901,7 @@ Call_10 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_11 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2869,7 +2919,7 @@ Call_11 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 Call_12 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -2887,7 +2937,7 @@ Call_12 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Whislte)
 tiles.placeOnTile(Call_1, tiles.getTileLocation(1000, 1000))
 tiles.placeOnTile(Call_2, tiles.getTileLocation(1000, 1000))
 tiles.placeOnTile(Call_3, tiles.getTileLocation(1000, 1000))
@@ -2913,18 +2963,7 @@ tiles.placeOnTile(Red_pikmin, tiles.getTileLocation(16, 17))
 tiles.placeOnTile(Yellow_Pikmin, tiles.getTileLocation(15, 17))
 tiles.placeOnTile(Blue_Pikmin, tiles.getTileLocation(14, 17))
 forever(function () {
-    Call_1.setFlag(SpriteFlag.Ghost, true)
-    Call_2.setFlag(SpriteFlag.Ghost, true)
-    Call_3.setFlag(SpriteFlag.Ghost, true)
-    Call_4.setFlag(SpriteFlag.Ghost, true)
-    Call_5.setFlag(SpriteFlag.Ghost, true)
-    Call_6.setFlag(SpriteFlag.Ghost, true)
-    Call_7.setFlag(SpriteFlag.Ghost, true)
-    Call_8.setFlag(SpriteFlag.Ghost, true)
-    Call_9.setFlag(SpriteFlag.Ghost, true)
-    Call_10.setFlag(SpriteFlag.Ghost, true)
-    Call_11.setFlag(SpriteFlag.Ghost, true)
-    Call_12.setFlag(SpriteFlag.Ghost, true)
+	
 })
 forever(function () {
     if (Group_1 == 0) {
@@ -3080,7 +3119,7 @@ forever(function () {
 })
 forever(function () {
     if (Group_1 == 0) {
-        if (Direction == 1) {
+        if (Direction_1 == 1) {
             while (Olimar.y - 12 >= Red_pikmin.y) {
                 Red_pikmin.y = Olimar.y - 12
                 pause(.5)
