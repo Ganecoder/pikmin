@@ -974,6 +974,22 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     Call_1.vy = 0
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (Group_2 == 2 && Group_3 == 0) {
+        Group_3 = 1
+        while (controller.A.isPressed()) {
+            Blue_Pikmin.x = Olimar.x
+            Blue_Pikmin.y = Olimar.y
+            pause(.1)
+        }
+    }
+    if (Group_1 == 2 && Group_2 == 0) {
+        Group_2 = 1
+        while (controller.A.isPressed()) {
+            Yellow_Pikmin.x = Olimar.x
+            Yellow_Pikmin.y = Olimar.y
+            pause(.1)
+        }
+    }
     if (Group_1 == 0) {
         Group_1 = 1
         while (controller.A.isPressed()) {
@@ -982,6 +998,67 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             pause(.1)
         }
     }
+})
+sprites.onCreated(SpriteKind.Food, function (sprite) {
+	
+})
+controller.down.onEvent(ControllerButtonEvent.Released, function () {
+    animation.stopAnimation(animation.AnimationTypes.All, Olimar)
+    if (Direction == 1) {
+        Olimar.setImage(img`
+            ............22.
+            ...........2452
+            .........112442
+            ........1...22.
+            .......bb......
+            ....999999.....
+            ..99e9e99119...
+            .9999e9e91199..
+            .9999ddddd999..
+            9999ddddddd999.
+            999ffdddffddd9.
+            93333ddddddbd9.
+            933133ddddddd9.
+            99333ddddddd99.
+            .99dddddddd99..
+            ..99ddd2dd99...
+            ....55bbb55....
+            ..22555555522..
+            .222.55555.222.
+            ..2..55555..2..
+            ....5555555....
+            ...555...555...
+            ..2222...2222..
+            `)
+    }
+    if (Direction == 0) {
+        Olimar.setImage(img`
+            .22............
+            2542...........
+            244211.........
+            .22...1........
+            ......bb.......
+            .....999999....
+            ...91199e9e99..
+            ..99119e9e9999.
+            ..999ddddd9999.
+            .999ddddddd9999
+            .9dddffdddff999
+            .9dbdddddd33339
+            .9ddddddd331339
+            .99ddddddd33399
+            ..99dddddddd99.
+            ...99dd2ddd99..
+            ....55bbb55....
+            ..22555555522..
+            .222.55555.222.
+            ..2..55555..2..
+            ....5555555....
+            ...555...555...
+            ..2222...2222..
+            `)
+    }
+    pause(.5)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     Direction = 1
@@ -1381,13 +1458,33 @@ controller.right.onEvent(ControllerButtonEvent.Released, function () {
         `)
 })
 sprites.onOverlap(SpriteKind.Whislte, SpriteKind.Enemy, function (sprite, otherSprite) {
-    Group_1 = 0
-    sprite.destroy()
-    for (let index = 0; index < 4; index++) {
-        otherSprite.follow(Olimar, 300)
+    if (Group_3 == 2) {
+        Group_3 = 0
+        sprite.destroy()
+        for (let index = 0; index < 4; index++) {
+            otherSprite.follow(Olimar, 300)
+        }
+        pause(1000)
+        otherSprite.follow(Olimar, 0)
     }
-    pause(1000)
-    otherSprite.follow(Olimar, 0)
+    if (Group_2 == 2) {
+        Group_2 = 0
+        sprite.destroy()
+        for (let index = 0; index < 4; index++) {
+            otherSprite.follow(Olimar, 300)
+        }
+        pause(1000)
+        otherSprite.follow(Olimar, 0)
+    }
+    if (Group_1 == 2) {
+        Group_1 = 0
+        sprite.destroy()
+        for (let index = 0; index < 4; index++) {
+            otherSprite.follow(Olimar, 300)
+        }
+        pause(1000)
+        otherSprite.follow(Olimar, 0)
+    }
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, Olimar)
@@ -1788,24 +1885,47 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
+    if (Group_2 == 2 && Group_3 == 1) {
+        if (Direction == 1) {
+            Group_3 = 2
+            Blue_Pikmin.vx = -100
+            pause(500)
+            Blue_Pikmin.vx = 0
+        }
+        if (Direction == 0) {
+            Group_3 = 2
+            Blue_Pikmin.vx = 100
+            pause(500)
+            Blue_Pikmin.vx = 0
+        }
+    }
+    if (Group_1 == 2 && Group_2 == 1) {
+        if (Direction == 1) {
+            Group_2 = 2
+            Yellow_Pikmin.vx = -100
+            pause(500)
+            Yellow_Pikmin.vx = 0
+        }
+        if (Direction == 0) {
+            Group_2 = 2
+            Yellow_Pikmin.vx = 100
+            pause(500)
+            Yellow_Pikmin.vx = 0
+        }
+    }
     if (Group_1 == 1) {
         if (Direction == 1) {
+            Group_1 = 2
             Red_pikmin.vx = -100
             pause(500)
             Red_pikmin.vx = 0
         }
         if (Direction == 0) {
+            Group_1 = 2
             Red_pikmin.vx = 100
             pause(500)
             Red_pikmin.vx = 0
         }
-        if (Direction_1 == 1) {
-        	
-        }
-        if (Direction_1 == 0) {
-        	
-        }
-        Group_1 = 2
     }
 })
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
@@ -2619,6 +2739,8 @@ controller.B.onEvent(ControllerButtonEvent.Released, function () {
     Call_11.destroy()
     Call_12.destroy()
 })
+let Group_3 = 0
+let Group_2 = 0
 let Group_1 = 0
 let Direction_1 = 0
 let Direction = 0
@@ -2634,6 +2756,8 @@ let Call_4: Sprite = null
 let Call_3: Sprite = null
 let Call_2: Sprite = null
 let Call_1: Sprite = null
+let Blue_Pikmin: Sprite = null
+let Yellow_Pikmin: Sprite = null
 let Red_pikmin: Sprite = null
 let Olimar: Sprite = null
 Olimar = sprites.create(img`
@@ -2662,6 +2786,46 @@ Olimar = sprites.create(img`
     ..2222...2222..
     `, SpriteKind.Player)
 controller.moveSprite(Olimar, 50, 50)
+let Flower = sprites.create(img`
+    . . . . . . . 
+    . . . . . . . 
+    . . . . . . . 
+    . . . . . . . 
+    . . . . . . . 
+    . . . . . . . 
+    1 1 1 1 . . . 
+    1 1 1 1 1 . . 
+    1 1 2 1 1 1 . 
+    1 2 2 2 2 1 1 
+    . 2 2 2 2 1 1 
+    . 1 2 2 2 1 1 
+    . . 1 1 1 1 . 
+    . 1 . 1 1 1 . 
+    . 1 1 1 1 1 1 
+    . . . . . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    . . . 7 . . . 
+    `, SpriteKind.Enemy)
 Red_pikmin = sprites.create(img`
     . . . . . . . 
     . . . . . . . 
@@ -2684,7 +2848,7 @@ Red_pikmin = sprites.create(img`
     . . 2 2 2 . . 
     . . 2 . 2 . . 
     `, SpriteKind.Enemy)
-let Yellow_Pikmin = sprites.create(img`
+Yellow_Pikmin = sprites.create(img`
     . 1 . 1 . . . 
     . 1 1 1 1 . . 
     1 1 5 5 1 1 . 
@@ -2703,7 +2867,7 @@ let Yellow_Pikmin = sprites.create(img`
     . . . . 5 5 5 
     . . . . 5 . 5 
     `, SpriteKind.Enemy)
-let Blue_Pikmin = sprites.create(img`
+Blue_Pikmin = sprites.create(img`
     . . . . . . . 
     1 1 . . . . . 
     1 1 1 . . . . 
@@ -2956,14 +3120,103 @@ tiles.placeOnTile(Olimar, tiles.getTileLocation(17, 17))
 Direction = 1
 Direction_1 = 0
 Group_1 = 0
-let Group_2 = 0
-let Group_3 = 0
+Group_2 = 0
+Group_3 = 0
 scene.setBackgroundColor(7)
 tiles.placeOnTile(Red_pikmin, tiles.getTileLocation(16, 17))
 tiles.placeOnTile(Yellow_Pikmin, tiles.getTileLocation(15, 17))
 tiles.placeOnTile(Blue_Pikmin, tiles.getTileLocation(14, 17))
 forever(function () {
-	
+    if (Group_3 == 0) {
+        if (controller.right.isPressed()) {
+            while (Olimar.y == Blue_Pikmin.y) {
+                Blue_Pikmin.vy = 0
+                pause(.1)
+            }
+        }
+        if (controller.right.isPressed()) {
+            while (Olimar.y < Blue_Pikmin.y) {
+                Blue_Pikmin.vy = -20
+                pause(.1)
+            }
+        }
+        if (controller.right.isPressed()) {
+            while (Olimar.y > Blue_Pikmin.y) {
+                Blue_Pikmin.vy = 20
+                pause(.1)
+            }
+        }
+        Blue_Pikmin.vy = 0
+    }
+})
+forever(function () {
+    if (Group_3 == 0) {
+        if (controller.left.isPressed()) {
+            while (Olimar.y == Blue_Pikmin.y) {
+                Blue_Pikmin.vy = 0
+                pause(.1)
+            }
+        }
+        if (controller.left.isPressed()) {
+            while (Olimar.y < Blue_Pikmin.y) {
+                Blue_Pikmin.vy = -20
+                pause(.1)
+            }
+        }
+        if (controller.left.isPressed()) {
+            while (Olimar.y > Blue_Pikmin.y) {
+                Blue_Pikmin.vy = 20
+                pause(.1)
+            }
+        }
+        Blue_Pikmin.vy = 0
+    }
+})
+forever(function () {
+    if (Group_2 == 0) {
+        if (controller.left.isPressed()) {
+            while (Olimar.y == Yellow_Pikmin.y) {
+                Yellow_Pikmin.vy = 0
+                pause(.1)
+            }
+        }
+        if (controller.left.isPressed()) {
+            while (Olimar.y < Yellow_Pikmin.y) {
+                Yellow_Pikmin.vy = -20
+                pause(.1)
+            }
+        }
+        if (controller.left.isPressed()) {
+            while (Olimar.y > Yellow_Pikmin.y) {
+                Yellow_Pikmin.vy = 20
+                pause(.1)
+            }
+        }
+        Yellow_Pikmin.vy = 0
+    }
+})
+forever(function () {
+    if (Group_2 == 0) {
+        if (controller.right.isPressed()) {
+            while (Olimar.y == Yellow_Pikmin.y) {
+                Yellow_Pikmin.vy = 0
+                pause(.1)
+            }
+        }
+        if (controller.right.isPressed()) {
+            while (Olimar.y < Yellow_Pikmin.y) {
+                Yellow_Pikmin.vy = -20
+                pause(.1)
+            }
+        }
+        if (controller.right.isPressed()) {
+            while (Olimar.y > Yellow_Pikmin.y) {
+                Yellow_Pikmin.vy = 20
+                pause(.1)
+            }
+        }
+        Yellow_Pikmin.vy = 0
+    }
 })
 forever(function () {
     if (Group_1 == 0) {
@@ -2971,7 +3224,6 @@ forever(function () {
             while (Olimar.y == Red_pikmin.y) {
                 Red_pikmin.vy = 0
                 pause(.1)
-                Red_pikmin.y = Olimar.y
             }
         }
         if (controller.left.isPressed()) {
@@ -2995,7 +3247,6 @@ forever(function () {
             while (Olimar.y == Red_pikmin.y) {
                 Red_pikmin.vy = 0
                 pause(.1)
-                Red_pikmin.y = Olimar.y
             }
         }
         if (controller.right.isPressed()) {
@@ -3011,6 +3262,75 @@ forever(function () {
             }
         }
         Red_pikmin.vy = 0
+    }
+})
+forever(function () {
+    if (Group_3 == 0) {
+        if (controller.up.isPressed()) {
+            while (Olimar.x == Blue_Pikmin.x) {
+                Blue_Pikmin.vx = 0
+                pause(.1)
+            }
+        }
+        if (controller.up.isPressed()) {
+            while (Olimar.x < Blue_Pikmin.x) {
+                Blue_Pikmin.vx = -20
+                pause(.1)
+            }
+        }
+        if (controller.up.isPressed()) {
+            while (Olimar.x > Blue_Pikmin.x) {
+                Blue_Pikmin.vx = 20
+                pause(.1)
+            }
+        }
+        Blue_Pikmin.vx = 0
+    }
+})
+forever(function () {
+    if (Group_3 == 0) {
+        if (controller.down.isPressed()) {
+            while (Olimar.x == Blue_Pikmin.x) {
+                Blue_Pikmin.vx = 0
+                pause(.1)
+            }
+        }
+        if (controller.down.isPressed()) {
+            while (Olimar.x < Blue_Pikmin.x) {
+                Blue_Pikmin.vx = -20
+                pause(.1)
+            }
+        }
+        if (controller.down.isPressed()) {
+            while (Olimar.x > Blue_Pikmin.x) {
+                Blue_Pikmin.vx = 20
+                pause(.1)
+            }
+        }
+        Blue_Pikmin.vx = 0
+    }
+})
+forever(function () {
+    if (Group_2 == 0) {
+        if (controller.up.isPressed()) {
+            while (Olimar.x == Yellow_Pikmin.x) {
+                Yellow_Pikmin.vx = 0
+                pause(.1)
+            }
+        }
+        if (controller.up.isPressed()) {
+            while (Olimar.x < Yellow_Pikmin.x) {
+                Yellow_Pikmin.vx = -20
+                pause(.1)
+            }
+        }
+        if (controller.up.isPressed()) {
+            while (Olimar.x > Yellow_Pikmin.x) {
+                Yellow_Pikmin.vx = 20
+                pause(.1)
+            }
+        }
+        Yellow_Pikmin.vx = 0
     }
 })
 forever(function () {
@@ -3019,7 +3339,6 @@ forever(function () {
             while (Olimar.x == Red_pikmin.x) {
                 Red_pikmin.vx = 0
                 pause(.1)
-                Red_pikmin.x = Olimar.x
             }
         }
         if (controller.down.isPressed()) {
@@ -3038,12 +3357,34 @@ forever(function () {
     }
 })
 forever(function () {
+    if (Group_2 == 0) {
+        if (controller.down.isPressed()) {
+            while (Olimar.x == Yellow_Pikmin.x) {
+                Yellow_Pikmin.vx = 0
+                pause(.1)
+            }
+        }
+        if (controller.down.isPressed()) {
+            while (Olimar.x < Yellow_Pikmin.x) {
+                Yellow_Pikmin.vx = -20
+                pause(.1)
+            }
+        }
+        if (controller.down.isPressed()) {
+            while (Olimar.x > Yellow_Pikmin.x) {
+                Yellow_Pikmin.vx = 20
+                pause(.1)
+            }
+        }
+        Yellow_Pikmin.vx = 0
+    }
+})
+forever(function () {
     if (Group_1 == 0) {
         if (controller.up.isPressed()) {
             while (Olimar.x == Red_pikmin.x) {
                 Red_pikmin.vx = 0
                 pause(.1)
-                Red_pikmin.x = Olimar.x
             }
         }
         if (controller.up.isPressed()) {
@@ -3088,10 +3429,50 @@ forever(function () {
     Call_12.vy += Olimar.vy - Call_12.vy + 0
 })
 forever(function () {
+    if (Group_3 == 0) {
+        if (Direction == 0) {
+            while (Olimar.x - 36 >= Blue_Pikmin.x) {
+                Blue_Pikmin.x = Olimar.x - 36
+                pause(.5)
+            }
+        }
+    }
+})
+forever(function () {
+    if (Group_3 == 0) {
+        if (Direction == 1) {
+            while (Olimar.x + 36 <= Blue_Pikmin.x) {
+                Blue_Pikmin.x = Olimar.x + 36
+                pause(.5)
+            }
+        }
+    }
+})
+forever(function () {
+    if (Group_2 == 0) {
+        if (Direction == 0) {
+            while (Olimar.x - 24 >= Yellow_Pikmin.x) {
+                Yellow_Pikmin.x = Olimar.x - 24
+                pause(.5)
+            }
+        }
+    }
+})
+forever(function () {
     if (Group_1 == 0) {
         if (Direction == 1) {
             while (Olimar.x + 12 <= Red_pikmin.x) {
                 Red_pikmin.x = Olimar.x + 12
+                pause(.5)
+            }
+        }
+    }
+})
+forever(function () {
+    if (Group_2 == 0) {
+        if (Direction == 1) {
+            while (Olimar.x + 24 <= Yellow_Pikmin.x) {
+                Yellow_Pikmin.x = Olimar.x + 24
                 pause(.5)
             }
         }
@@ -3108,10 +3489,50 @@ forever(function () {
     }
 })
 forever(function () {
+    if (Group_3 == 0) {
+        if (Direction_1 == 1) {
+            while (Olimar.y - 36 >= Blue_Pikmin.y) {
+                Blue_Pikmin.y = Olimar.y - 36
+                pause(.5)
+            }
+        }
+    }
+})
+forever(function () {
+    if (Group_3 == 0) {
+        if (Direction_1 == 0) {
+            while (Olimar.y + 36 <= Blue_Pikmin.y) {
+                Blue_Pikmin.y = Olimar.y + 36
+                pause(.5)
+            }
+        }
+    }
+})
+forever(function () {
+    if (Group_2 == 0) {
+        if (Direction_1 == 0) {
+            while (Olimar.y + 24 <= Yellow_Pikmin.y) {
+                Yellow_Pikmin.y = Olimar.y + 24
+                pause(.5)
+            }
+        }
+    }
+})
+forever(function () {
     if (Group_1 == 0) {
         if (Direction_1 == 0) {
             while (Olimar.y + 12 <= Red_pikmin.y) {
                 Red_pikmin.y = Olimar.y + 12
+                pause(.5)
+            }
+        }
+    }
+})
+forever(function () {
+    if (Group_2 == 0) {
+        if (Direction_1 == 1) {
+            while (Olimar.y - 24 >= Yellow_Pikmin.y) {
+                Yellow_Pikmin.y = Olimar.y - 24
                 pause(.5)
             }
         }
